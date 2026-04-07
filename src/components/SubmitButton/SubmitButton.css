@@ -1,0 +1,56 @@
+.submit-button {
+  width: 300px;
+  padding: 14px 28px;
+  background-color: #f6e9cd;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.submit-button:hover {
+  border-radius: 20px;
+  background-color: #000;
+  color:#f6e9cd;
+
+}
+
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submit-button.loading {
+  cursor: wait;
+  background-color: #000;
+  color:#f6e9cd;
+}
+
+/* Спиннер для состояния загрузки */
+.spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  border: 2px solid var(--bg-primary);
+  border-top: 2px solid transparent;
+  border-radius: 20px;
+  animation: spin 0.8s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.submit-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
