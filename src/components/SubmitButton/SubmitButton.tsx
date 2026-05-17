@@ -1,10 +1,10 @@
 import './SubmitButton.css'
 
 interface SubmitButtonProps {
-  onClick: () => void;           // Функция при нажатии
-  isLoading?: boolean;           // Состояние загрузки
-  disabled?: boolean;            // Блокировка кнопки
-  text?: string;                 // Текст на кнопке
+  onClick: () => void;           
+  isLoading?: boolean;           
+  disabled?: boolean;            
+  text?: string;                 
 }
 
 function SubmitButton({ 

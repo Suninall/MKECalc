@@ -3,7 +3,7 @@ import './InputField.css'
 interface InputFieldProps {
   id: string;          
   label: string;       
-  value: string;       
+  value: string|null;       
   onChange: (value: string) => void;     
   placeholder?: string; 
   required?: boolean;   
@@ -26,7 +26,7 @@ function InputField({
       <input
         id={id}
         className="input-textarea"
-        value={value}
+        value={value ?? ""}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         required={required}

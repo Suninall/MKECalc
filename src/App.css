@@ -1,7 +1,8 @@
 .pageContainer{
   background-color: #f6e9cd;
   height:1200px;
-  margin:50px 200px;
+  min-width: 1000px;
+  margin:50px 100px;
   border-radius: 40px;
   color:#000000;
 }
@@ -50,7 +51,21 @@ nav ul {
 .inputSection{
   padding-left:50px;
 }
+
+.inputBlockText{
+  margin-bottom: 50px;
+}
+
+.inputs{
+  display: flex;
+  justify-content: center;  
+  align-items: center;      
+  flex-direction: column;  
+  width: 100%;
+}
 .inputs-grid{
+  /* //padding-top: 50px; */
+  margin-bottom: 50px;
   padding-right: 40px;
   width:600px;
 }
@@ -64,8 +79,9 @@ nav ul {
 
 }
 
-.inputBlockText{
-  margin-bottom: 20px;
+.selectorType{
+  align-items: center;
+  margin-bottom: 15px;
 }
 
 .button-section{

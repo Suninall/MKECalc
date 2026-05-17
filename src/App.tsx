@@ -13,19 +13,16 @@ interface NodeResult {
 }
 
 function App() {
-  const [functionF, setFunctionF] = useState('return x + y;')
-  const [ug, setUg] = useState('return x;')
-  const [betta, setBetta] = useState('return 1;')
-  const [tetta, setTetta] = useState('return 0;')
-  const [uBetta, setUBetta] = useState('return x;')
+  const [functionF, setFunctionF] = useState<string|null>(null);
+  const [ug, setUg] = useState<string|null>(null);
 
-  const [xMin, setXMin] = useState('return 0;')
-  const [yMin, setYMin] = useState('return 0;')
-  const [xMax, setXMax] = useState('return 0;')
-  const [yMax, setYMax] = useState('return 0;')
+  const [xMin, setXMin] = useState<string|null>(null);
+  const [yMin, setYMin] = useState<string|null>(null);
+  const [xMax, setXMax] = useState<string|null>(null);
+  const [yMax, setYMax] = useState<string|null>(null);
 
-  const [xSteps, setXSteps] = useState('return 1;')
-  const [ySteps, setYSteps] = useState('return 1;')
+  const [xSteps, setXSteps] = useState<string|null>(null);
+  const [ySteps, setYSteps] = useState<string|null>(null);
 
   const [results, setResults] = useState<NodeResult[] | null>(null)
   const [isLoading, setIsLoading] = useState(false)
@@ -38,13 +35,13 @@ function App() {
     setError(null)
     
     try {
-      // Здесь будет вызов вашего C++ солвера
+      // вызов бэка
       console.log('Решение уравнения...')
       
       // Имитация задержки
       await new Promise(resolve => setTimeout(resolve, 2000))
       
-      // ВРЕМЕННЫЕ ТЕСТОВЫЕ ДАННЫЕ (потом замените на реальные)
+      //рандомные значения
       const mockResults: NodeResult[] = []
       for (let i = 0; i < 20; i++) {
         mockResults.push({
@@ -80,9 +77,15 @@ function App() {
       <h1 className='pageTitle'>Калькулятор для двумерных эллиптических краевых задач в декартовой системе координат</h1>
       
       <main className='inputSection'>
-        <article>
+        <article className='inputs'>
           <h2 className='inputTitle'>Ввод параметров задачи:</h2>
           <p className='inputBlockText'>Введите функцию f(x,y), краевые условия и параметры сетки. Все обязательные поля выделены <b>жирным</b></p>
+          <div className='selectorType'>
+              <ElementTypeSelector 
+              selectedType={elementType}
+              onChange={setElementType}
+              />
+            </div>
           <div className='equationInfo'>
             <div className="inputs-grid">
             <div className="inputs-column">
@@ -91,7 +94,7 @@ function App() {
                 label="Функция f(x, y)"
                 value={functionF}
                 onChange={setFunctionF}
-                placeholder="Пример: return x * x + y * y;"
+                placeholder="x * x + y * y"
                 required
               />
               
@@ -100,85 +103,59 @@ function App() {
                 label="Первое краевое условие ug(x, y)"
                 value={ug}
                 onChange={setUg}
-                placeholder="Пример: return x + y;"
+                placeholder="x + y"
                 required
               />
-              
-              <InputField
-                id="betta"
-                label="Коэффициент теплоотдачи Betta(x, y)"
-                value={betta}
-                onChange={setBetta}
-                placeholder="Пример: return 1;"
-              />
-            </div>
-            
-            <div className="inputs-column">
-              <InputField
-                id="tetta"
-                label="Второе краевое условие Teta(x, y)"
-                value={tetta}
-                onChange={setTetta}
-                placeholder="Пример: return 1/9;"
-              />
-              
-              <InputField
-                id="u-betta"
-                label="Третье краевое условие u_betta(x, y)"
-                value={uBetta}
-                onChange={setUBetta}
-                placeholder="Пример: return x;"
-              />
-            </div>
-          </div>
-          <div className='seconInfoBlock'>
-            <div className='chooseElementBlock'>
-            <ElementTypeSelector 
-            selectedType={elementType}
-            onChange={setElementType}
-            />
 
-            <InputField
+              <InputField
                 id="x-min"
                 label="Минимальная координата по х"
                 value={xMin}
                 onChange={setXMin}
-                placeholder="Пример: return 0;"
+                placeholder="0"
               />
               <InputField
                 id="y-min"
                 label="Минимальная координата по y"
                 value={yMin}
                 onChange={setYMin}
-                placeholder="Пример: return 0;"
+                placeholder="0"
               />
+                          
+              
+            </div>   
+          </div>
+          <div className='seconInfoBlock'>
+            <div className='chooseElementBlock'>
               <InputField
                 id="x-max"
                 label="Максимальная координата по х"
                 value={xMax}
                 onChange={setXMax}
-                placeholder="Пример: return 0;"
+                placeholder="0"
               />
+
               <InputField
                 id="y-max"
                 label="Максимальная координата по y"
                 value={yMax}
                 onChange={setYMax}
-                placeholder="Пример: return 0;"
+                placeholder="0"
               />
+        
               <InputField
                 id="x-steps"
                 label="Количесвто отрезков по х"
                 value={xSteps}
                 onChange={setXSteps}
-                placeholder="Пример: return 1;"
+                placeholder="1"
               />
               <InputField
                 id="y-steps"
                 label="Количесвто отрезков по y"
                 value={ySteps}
                 onChange={setYSteps}
-                placeholder="Пример: return 1;"
+                placeholder="1"
               />
 
           </div>

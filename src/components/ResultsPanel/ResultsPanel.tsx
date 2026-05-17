@@ -8,9 +8,9 @@ interface NodeResult {
 }
 
 interface ResultsPanelProps {
-  results: NodeResult[] | null;  // Массив результатов или null
-  isLoading?: boolean;           // Состояние загрузки
-  error?: string | null;         // Ошибка
+  results: NodeResult[] | null;  
+  isLoading?: boolean;           
+  error?: string | null;         
 }
 
 function ResultsPanel({ results, isLoading = false, error = null }: ResultsPanelProps) {
