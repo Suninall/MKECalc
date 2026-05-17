@@ -1,15 +1,16 @@
+import type { ElementType } from '../../types/calculation'
 import './ElementTypeSelector.css'
 
 interface ElementTypeSelectorProps {
-  selectedType: 'triangles' | 'rectangles';  // Текущий выбранный тип
-  onChange: (type: 'triangles' | 'rectangles') => void;  // Функция при изменении
+  selectedType: ElementType
+  onChange: (type: ElementType) => void
 }
 
 function ElementTypeSelector({ selectedType, onChange }: ElementTypeSelectorProps) {
   return (
     <div className="element-type-selector">
       <label className="selector-label">Тип конечных элементов:</label>
-      
+
       <div className="radio-group">
         <label className={`radio-option ${selectedType === 'triangles' ? 'active' : ''}`}>
           <input
@@ -22,7 +23,7 @@ function ElementTypeSelector({ selectedType, onChange }: ElementTypeSelectorProp
           <span className="radio-custom"></span>
           <span className="radio-text">Треугольники</span>
         </label>
-        
+
         <label className={`radio-option ${selectedType === 'rectangles' ? 'active' : ''}`}>
           <input
             type="radio"

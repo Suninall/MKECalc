@@ -1,21 +1,13 @@
+import type { NodeResult } from '../../types/calculation'
 import './ResultsPanel.css'
 
-interface NodeResult {
-  id: number;           // Номер узла
-  x: number;           // Координата x
-  y: number;           // Координата y
-  value: number;       // Значение функции в узле
-}
-
 interface ResultsPanelProps {
-  results: NodeResult[] | null;  
-  isLoading?: boolean;           
-  error?: string | null;         
+  results: NodeResult[] | null
+  isLoading?: boolean
+  error?: string | null
 }
 
 function ResultsPanel({ results, isLoading = false, error = null }: ResultsPanelProps) {
-  
-  // Состояние загрузки
   if (isLoading) {
     return (
       <div className="results-panel loading">
@@ -24,8 +16,7 @@ function ResultsPanel({ results, isLoading = false, error = null }: ResultsPanel
       </div>
     )
   }
-  
-  // Ошибка
+
   if (error) {
     return (
       <div className="results-panel error">
@@ -35,17 +26,15 @@ function ResultsPanel({ results, isLoading = false, error = null }: ResultsPanel
       </div>
     )
   }
-  
-  // Нет результатов
+
   if (!results || results.length === 0) {
     return (
       <div className="results-panel empty">
-        <p>Пока что результатов</p>
+        <p>Пока что нет результатов</p>
       </div>
     )
   }
-  
-  // Есть результаты
+
   return (
     <div className="results-panel">
       <div className="results-header">
@@ -54,7 +43,7 @@ function ResultsPanel({ results, isLoading = false, error = null }: ResultsPanel
           <span>Всего узлов: {results.length}</span>
         </div>
       </div>
-      
+
       <div className="results-table-wrapper">
         <table className="results-table">
           <thead>

@@ -1,20 +1,20 @@
 import './SubmitButton.css'
 
 interface SubmitButtonProps {
-  onClick: () => void;           
-  isLoading?: boolean;           
-  disabled?: boolean;            
-  text?: string;                 
+  onClick: () => void
+  isLoading?: boolean
+  disabled?: boolean
+  text?: string
 }
 
-function SubmitButton({ 
-  onClick, 
-  isLoading = false, 
+function SubmitButton({
+  onClick,
+  isLoading = false,
   disabled = false,
-  text = 'РЕШИТЬ УРАВНЕНИЕ'
+  text = 'РЕШИТЬ УРАВНЕНИЕ',
 }: SubmitButtonProps) {
   return (
-    <button 
+    <button
       className={`submit-button ${isLoading ? 'loading' : ''}`}
       onClick={onClick}
       disabled={disabled || isLoading}
